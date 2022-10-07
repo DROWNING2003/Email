@@ -7,6 +7,7 @@ letterStore.get({
     "id":route.params.id
 })
 useHead({
+  title:'看看ta的信',
   bodyAttrs: {
     title: route.meta.title,
   },

@@ -5,6 +5,7 @@ import Dialog from "@/components/Dialog"
 const route = useRoute();
 const letterStore = useLetterStore();
 useHead({
+  title:'写封信给ta',
   bodyAttrs: {
     title: route.meta.title,
   },
