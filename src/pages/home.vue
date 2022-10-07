@@ -55,8 +55,8 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
                 id="message"
               ></textarea> -->
               <p>{{letterStore.letter.wish}}</p>
-              <pre class="text-right"> {{letterStore.letter.name}}
-                {{letterStore.letter.date}}</pre>
+              <pre class="text-right"> {{letterStore.letter.name}}</pre>
+              <pre class="text-right"> {{letterStore.letter.date}}</pre>
               <!-- <label for="name">Name:</label> -->
               <!-- <input type="text" name="name" value="" id="name" />
               <label for="email">Email: </label>
@@ -94,7 +94,7 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
 #form_wrap {
   /* font-family: "AaHuaYu·ZiLuoLanYongHeng"; */
   overflow: hidden;
-  height: 446px;
+  height: 470px;
   position: relative;
   top: 0px;
   -webkit-transition: all 1s ease-in-out 0.3s;

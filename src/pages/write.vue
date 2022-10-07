@@ -36,11 +36,11 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
 
 const letter = reactive<any>({
   title:"送你一封信",
-  pro:"hello xxx",
-  wish:"xxxxx",
-  message: "asdasd",
-  name: "123",
-  email: "2190487478@qq.com",
+  pro:"",
+  wish:"",
+  message: "",
+  name: "",
+  email: "",
   date:0
 })
 function send() {
@@ -108,7 +108,7 @@ function send() {
 #form_wrap {
 
   overflow: hidden;
-  height: 446px;
+  height: 470px;
   position: relative;
   top: 0px;
   -webkit-transition: all 1s ease-in-out 0.3s;
