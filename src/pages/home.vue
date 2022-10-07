@@ -102,12 +102,16 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
   -o-transition: all 1s ease-in-out 0.3s;
   transition: all 1s ease-in-out 0.3s;
 }
-
+@media screen and (min-width: 500px) {
+  #form_wrap:before {
+    bottom: 70px;
+  }
+}
 #form_wrap:before {
   content: "";
   position: absolute;
   box-sizing: content-box;
-  bottom: 128px;
+  /* bottom: 128px; */
   /* left: 0px; */
   background-size: 100%;
   background: url("@/assets/before.png") center/100% auto no-repeat;

@@ -72,7 +72,7 @@ function to() {
 
 #form_wrap {
   overflow: hidden;
-  height: 446px;
+  height: 455px;
   position: relative;
   top: 0px;
   -webkit-transition: all 1s ease-in-out 0.3s;
@@ -80,12 +80,16 @@ function to() {
   -o-transition: all 1s ease-in-out 0.3s;
   transition: all 1s ease-in-out 0.3s;
 }
-
+@media screen and (max-width: 650px) {
+  #form_wrap:before {
+    bottom: calc(100vw/6);
+  }
+}
 #form_wrap:before {
   content: "";
   position: absolute;
   box-sizing: content-box;
-  bottom: 128px;
+  /* bottom: 128px; */
   /* left: 0px; */
   background-size: 100%;
   background: url("@/assets/before.png") center/100% auto no-repeat;
