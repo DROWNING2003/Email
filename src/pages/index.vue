@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import { useStore as useLetterStore } from "@/store/letter";
 const route = useRoute();
-const letterStore = useLetterStore();
-letterStore.get({
-    "id":route.params.id
-})
+const router = useRouter();
 useHead({
+  title:'送ta一封信',
   bodyAttrs: {
     title: route.meta.title,
   },
@@ -29,9 +26,13 @@ const BUILD_DATE = import.meta.env.VITE_APP_BUILD_EPOCH
 const thisYear = new Date().getFullYear();
 const fistMeet = "2021年2月16日";
 const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
+
+function to() {
+  router.push("/write")
+}
 </script>
 <template>
-  <div class="relative py-8">
+  <div class="relative py-8" @click="to">
     <div
       class="absolute inset-0 bg-[url(/img/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
     ></div>
@@ -39,29 +40,14 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
       class="container relative max-w-2xl mx-auto bg-white shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5"
     >
       <header class="px-4 pt-6 prose-sm md:px-6 md:prose">
-        <!-- <h1>我们相遇{{ loverday }}天💕</h1> -->
-        <h1>{{letterStore.letter.title}}</h1>
-
+        <h1>我们相遇{{ loverday }}天💕</h1>
       </header>
       <main>
         <div class="xl:w-[530px]  mx-auto w-[80%]"> 
           <div id="form_wrap" class="font-serif">
             <form>
-              <p>{{letterStore.letter.pro}}</p>
-              <pre> {{letterStore.letter.message}}</pre>
-              <!-- <textarea
-                v-model="letterStore.letter.message"
-                name="message"
-                id="message"
-              ></textarea> -->
-              <p>{{letterStore.letter.wish}}</p>
-              <pre class="text-right"> {{letterStore.letter.name}}
-                {{letterStore.letter.date}}</pre>
-              <!-- <label for="name">Name:</label> -->
-              <!-- <input type="text" name="name" value="" id="name" />
-              <label for="email">Email: </label>
-              <input type="text" name="email" value="" id="email" />
-              <input type="submit" name="submit" value="Now, I send, thanks!" /> -->
+              <h1 class="text-center font-extrabold font-sans">送ta一封信</h1>
+              <h1 class="text-center">全页面点击跳转</h1>
             </form>
         </div>
         </div>
@@ -82,17 +68,9 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
 </template>
 
 <style>
-.letter{
-  width: 530px;
-  margin: 0 auto;
-}
 
-/* @font-face {
-  font-family: 'AaHuaYu·ZiLuoLanYongHeng-2';
-  src: local('AaHuaYu·ZiLuoLanYongHeng-2'), url("@/assets/common/AaHuaYu·ZiLuoLanYongHeng-2.ttf") format('truetype');
-} */
+
 #form_wrap {
-  /* font-family: "AaHuaYu·ZiLuoLanYongHeng"; */
   overflow: hidden;
   height: 446px;
   position: relative;
@@ -124,16 +102,6 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
   /* background: url("@/assets/after.png"); */
   width: 100%;
   height: 260px;
-}
-
-#form_wrap.hide:after,
-#form_wrap.hide:before {
-  display: none;
-}
-
-#form_wrap:hover {
-  height: 776px;
-  top: -200px;
 }
 
 form {

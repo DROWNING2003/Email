@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import { useStore as useLetterStore } from "@/store/letter";
+import Dialog from "@/components/Dialog"
 const route = useRoute();
 const letterStore = useLetterStore();
-letterStore.get({
-    "id":route.params.id
-})
 useHead({
   bodyAttrs: {
     title: route.meta.title,
@@ -29,6 +27,26 @@ const BUILD_DATE = import.meta.env.VITE_APP_BUILD_EPOCH
 const thisYear = new Date().getFullYear();
 const fistMeet = "2021年2月16日";
 const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
+
+
+// 无标题
+// Dialog('500 服務器錯誤，請稍候再試!');
+// 有标题
+
+
+const letter = reactive<any>({
+  title:"送你一封信",
+  pro:"hello xxx",
+  wish:"xxxxx",
+  message: "asdasd",
+  name: "123",
+  email: "2190487478@qq.com",
+  date:0
+})
+function send() {
+  letterStore.letter = letter
+  Dialog('输入几天后发送', { title: '选择送达日期' });
+}
 </script>
 <template>
   <div class="relative py-8">
@@ -39,29 +57,29 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
       class="container relative max-w-2xl mx-auto bg-white shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5"
     >
       <header class="px-4 pt-6 prose-sm md:px-6 md:prose">
-        <!-- <h1>我们相遇{{ loverday }}天💕</h1> -->
-        <h1>{{letterStore.letter.title}}</h1>
-
+        <h1>来写一封信吧📪</h1>
+        <label for="email">标题:</label>
+        <input v-model="letter.title" type="text" name="name" id="name" />
       </header>
       <main>
         <div class="xl:w-[530px]  mx-auto w-[80%]"> 
-          <div id="form_wrap" class="font-serif">
+          <div id="form_wrap">
             <form>
-              <p>{{letterStore.letter.pro}}</p>
-              <pre> {{letterStore.letter.message}}</pre>
-              <!-- <textarea
-                v-model="letterStore.letter.message"
+              <label for="email">信头:</label>
+              <input v-model="letter.pro" type="text" name="name" id="name" />
+              <label for="email">内容: </label>
+              <textarea
                 name="message"
+                v-model="letter.message"
                 id="message"
-              ></textarea> -->
-              <p>{{letterStore.letter.wish}}</p>
-              <pre class="text-right"> {{letterStore.letter.name}}
-                {{letterStore.letter.date}}</pre>
-              <!-- <label for="name">Name:</label> -->
-              <!-- <input type="text" name="name" value="" id="name" />
-              <label for="email">Email: </label>
-              <input type="text" name="email" value="" id="email" />
-              <input type="submit" name="submit" value="Now, I send, thanks!" /> -->
+              ></textarea>
+              <label for="email">祝福语:</label>
+              <input v-model="letter.wish" type="text" name="name" id="name" />
+              <label for="name">你的姓名 </label>
+              <input v-model="letter.name" type="text" name="name" id="name" />
+              <label for="email">对方邮箱 </label>
+              <input v-model="letter.email" type="text" name="email" id="email" />
+              <text class="send" @click="send">Now, I send, thanks!</text>
             </form>
         </div>
         </div>
@@ -87,12 +105,8 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
   margin: 0 auto;
 }
 
-/* @font-face {
-  font-family: 'AaHuaYu·ZiLuoLanYongHeng-2';
-  src: local('AaHuaYu·ZiLuoLanYongHeng-2'), url("@/assets/common/AaHuaYu·ZiLuoLanYongHeng-2.ttf") format('truetype');
-} */
 #form_wrap {
-  /* font-family: "AaHuaYu·ZiLuoLanYongHeng"; */
+
   overflow: hidden;
   height: 446px;
   position: relative;
@@ -132,7 +146,7 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
 }
 
 #form_wrap:hover {
-  height: 776px;
+  height: 900px;
   top: -200px;
 }
 
@@ -198,7 +212,7 @@ input[type="text"]:focus {
   background: rgba(255, 255, 255, 0.35);
 }
 
-#form_wrap input[type="submit"] {
+#form_wrap .send {
   position: relative;
   font-family: "YanoneKaffeesatzRegular";
   font-size: 24px;
@@ -218,7 +232,7 @@ input[type="text"]:focus {
   transition: opacity 0.6s ease-in-out 0s;
 }
 
-#form_wrap:hover input[type="submit"] {
+#form_wrap:hover .send {
   z-index: 1;
   opacity: 1;
   -webkit-transition: opacity 0.5s ease-in-out 1.3s;
