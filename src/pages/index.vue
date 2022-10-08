@@ -67,7 +67,7 @@ function to() {
   </div>
 </template>
 
-<style>
+<style scoped>
 
 
 #form_wrap {
@@ -80,23 +80,23 @@ function to() {
   -o-transition: all 1s ease-in-out 0.3s;
   transition: all 1s ease-in-out 0.3s;
 }
-@media screen and (max-width: 650px) {
-  #form_wrap:before {
-    bottom: calc(100vw/6);
-  }
-}
+
 #form_wrap:before {
   content: "";
   position: absolute;
   box-sizing: content-box;
-  /* bottom: 128px; */
+  bottom: 128px;
   /* left: 0px; */
   background-size: 100%;
   background: url("@/assets/before.png") center/100% auto no-repeat;
   width: 100%;
   height: 316px;
 }
-
+@media screen and (max-width: 650px) {
+  #form_wrap:before {
+    bottom: calc(100vw/6);
+  }
+}
 #form_wrap:after {
   content: "";
   position: absolute;

@@ -47,9 +47,9 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
       <main>
         <div class="xl:w-[530px]  mx-auto w-[80%]"> 
           <div id="form_wrap" class="font-serif">
-            <form>
+            <div class="form">
               <p>{{letterStore.letter.pro}}</p>
-              <pre> {{letterStore.letter.message}}</pre>
+              <pre style="white-space: pre-wrap;"> {{letterStore.letter.message}}</pre>
               <!-- <textarea
                 v-model="letterStore.letter.message"
                 name="message"
@@ -63,7 +63,7 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
               <label for="email">Email: </label>
               <input type="text" name="email" value="" id="email" />
               <input type="submit" name="submit" value="Now, I send, thanks!" /> -->
-            </form>
+            </div>
         </div>
         </div>
       </main>
@@ -82,44 +82,34 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
   </div>
 </template>
 
-<style>
-.letter{
-  width: 530px;
-  margin: 0 auto;
-}
+<style scoped>
 
-/* @font-face {
-  font-family: 'AaHuaYu·ZiLuoLanYongHeng-2';
-  src: local('AaHuaYu·ZiLuoLanYongHeng-2'), url("@/assets/common/AaHuaYu·ZiLuoLanYongHeng-2.ttf") format('truetype');
-} */
 #form_wrap {
-  /* font-family: "AaHuaYu·ZiLuoLanYongHeng"; */
   overflow: hidden;
   height: 470px;
   position: relative;
   top: 0px;
-  -webkit-transition: all 1s ease-in-out 0.3s;
+  /* -webkit-transition: all 1s ease-in-out 0.3s;
   -moz-transition: all 1s ease-in-out 0.3s;
   -o-transition: all 1s ease-in-out 0.3s;
-  transition: all 1s ease-in-out 0.3s;
+  transition: max-height 1s ease-in-out 0.3s; */
 }
-@media screen and (min-width: 500px) {
-  #form_wrap:before {
-    bottom: 70px;
-  }
-}
+
 #form_wrap:before {
   content: "";
   position: absolute;
   box-sizing: content-box;
-  /* bottom: 128px; */
-  /* left: 0px; */
+  bottom: 128px;
   background-size: 100%;
   background: url("@/assets/before.png") center/100% auto no-repeat;
   width: 100%;
   height: 316px;
 }
-
+@media screen and (max-width: 650px) {
+  #form_wrap:before {
+    bottom: calc(100vw/6);
+  }
+}
 #form_wrap:after {
   content: "";
   position: absolute;
@@ -137,11 +127,13 @@ const loverday = dayjs(Date()).diff(dayjs("2021-2-16"), "days");
 }
 
 #form_wrap:hover {
-  height: 776px;
+  /* transition: max-height 0.25s ease-in; */
+  /* max-height: 50rem; */
+  height: auto;
   top: -200px;
 }
 
-form {
+.form {
   background: #f7f2ec url("@/assets/letter_bg.png");
   position: relative;
   top: 200px;
@@ -157,14 +149,15 @@ form {
   box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
   -moz-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 14px #fff;
   -webkit-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
-  -webkit-transition: all 1s ease-in-out 0.3s;
+  /* -webkit-transition: all 1s ease-in-out 0.3s;
   -moz-transition: all 1s ease-in-out 0.3s;
   -o-transition: all 1s ease-in-out 0.3s;
-  transition: all 1s ease-in-out 0.3s;
+  transition: all 1s ease-in-out 0.3s; */
 }
-
-#form_wrap:hover form {
-  height: 530px;
+#form_wrap:hover .form {
+  /* max-height: 50rem; */
+  height:auto;
+  margin-bottom: 380px;
 }
 
 label {

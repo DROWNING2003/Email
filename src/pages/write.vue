@@ -100,14 +100,10 @@ function send() {
   </div>
 </template>
 
-<style>
-.letter{
-  width: 530px;
-  margin: 0 auto;
-}
+<style scoped>
+
 
 #form_wrap {
-
   overflow: hidden;
   height: 470px;
   position: relative;
@@ -129,7 +125,11 @@ function send() {
   width: 100%;
   height: 316px;
 }
-
+@media screen and (max-width: 650px) {
+  #form_wrap:before {
+    bottom: calc(100vw/6);
+  }
+}
 #form_wrap:after {
   content: "";
   position: absolute;
