@@ -40,7 +40,7 @@ function to() {
       class="container relative max-w-2xl mx-auto bg-white shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5"
     >
       <header class="px-4 pt-6 prose-sm md:px-6 md:prose">
-        <h1>我们相遇{{ loverday }}天💕</h1>
+        <h1>书信永远浪漫📮</h1>
       </header>
       <main>
         <div class="xl:w-[530px]  mx-auto w-[80%]"> 
